@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{%load crispy_forms_tags%}
+
+{%block headtilte%} Engineers {%endblock%}
+{%block title-color%}
+
+  {% if engineer.gender == "M" %}
+  bg-primary 
+  {% else %}  
+  bg-info
+  {% endif %}
+
+{%endblock%}
+{%block icon%}fa-solid fa-user-astronaut {%endblock%}
+{%block mastertitle%}Enginner's {{engineer.firstname}} {%endblock%}
+
+
+{% block  contenido%}
+<div class="container mt-5">
+  <div class="d-flex justify-content-between">
+    <h6>CANDIDATE {{engineer.id}}</h6>
+    <a class="btn {%if engineer.gender == 'M' %}btn-primary{%else%} btn-info {%endif%} btn-sm border-ligth"  
+    style="width: 150px; color: #fff;"  href="{{engineer.file.url}}"> Download CV</a>
+  </div>
+  <hr>
+
+  <div class="float-end" style="float: right;">
+    <img src="{{engineer.image.url}}" class="img-fluid img-thumbnail" width="150" height="150" alt="">
+    <div class="text-center mt-2" style="font-size: 14px;">{{engineer.birthday|timesince}} old</div>
+  </div>
+  <h6 class="text-primary mb-4 mt-4">PERSONAL</h6>
+
+  {%if engineer.job == 'FR-22'%}
+    <p><strong >Ocupation: </strong><span class="text-primary">Frontend</span> </p>
+  {%elif engineer.job == 'BA-33'%}
+    <p><strong >Ocupation: </strong><span class="text-danger">Backend</span> </p>
+  {%else%}
+    <p><strong >Ocupation: </strong> <span class="text-success">Fullstack</span> </p>
+  {%endif%}
+
+
+  <p><strong>Gender: </strong> {{engineer.gender}}</p>
+  <p><strong>Phone: </strong> {{engineer.phone}}</p>
+  <p><strong>Email: </strong> {{engineer.email}}</p>
+  <p><strong>Birthday: </strong> {{engineer.birthday}}</p>
+  <p><strong>Personality: </strong> {{engineer.personality}}</p>
+  {%if engineer.smoker == "1" %}
+  <p><strong>  Smoker: </strong> <span class="text-danger">SI</span></p>
+  {%else%}
+  <p><strong>Smoker: </strong> <span class="text-success">NO</span></p>
+  {%endif%}
+
+  {%if engineer.experience == True %}
+  <p><strong>Experience: </strong> <span class="text-primary">YES</span></p>
+  {%else%}
+  <p><strong>Experience: </strong> <span class="text-danger">NO</span></p>
+  {%endif%}
+  <p><strong>Salary: </strong> {{engineer.salary}}</p>
+  <p><strong>Message: </strong> {{engineer.message}}</p>
+  <hr>
+  <h6 class="text-primary mb-4 mt-4">SKILLS</h6>
+  <p><strong>Languages: </strong> {{engineer.languages}}</p>
+  <p><strong>Frameworks: </strong> {{engineer.frameworks}}</p>
+  <p><strong>Databases: </strong> {{engineer.databases}}</p>
+  <p><strong>Libraries: </strong> {{engineer.libraries}}</p>
+  <p><strong>Mobile: </strong> {{engineer.mobile}}</p>
+  <p><strong>Other: </strong> {{engineer.other}}</p>.
+  <hr>
+  <h6 class="text-primary mb-4 mt-4">EDUCATIONAL</h6>
+  <p><strong>University: </strong> {{engineer.university}}</p>
+  <p><strong>Faculty: </strong> {{engineer.faculty}}</p>
+  <p><strong>Institution: </strong> {{engineer.institution}}</p>
+  <p><strong>Course: </strong> {{engineer.course}}</p>
+  <p><strong>Start course: </strong> {{engineer.start_course}}</p>
+  <p><strong>About course: </strong> {{engineer.about_course}}</p>
+  <p><strong>Status course: </strong> {{engineer.status_course}}</p>
+  <p><strong>About course: </strong> {{engineer.about_course}}</p>
+
+  <a href="{% url 'backend'%}" class="btn btn-primary"> Back</a>
+
+  <br><br><br>
+</div>
+{%endblock%}

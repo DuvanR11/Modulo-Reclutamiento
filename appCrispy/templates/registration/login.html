@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+{%load crispy_forms_tags%}
+
+{%block headtilte%} Login {%endblock%}
+{%block title-color%} bg-warning {%endblock%}
+{%block icon%}fa-brands fa-galactic-senate {%endblock%}
+{%block mastertitle%}Login {%endblock%}
+
+
+{% block  contenido%}
+
+<div class="container card  p-3 text-center border-dark mt-5" style="width:30%;">
+
+  {%if form.errors%}
+  <div class="alert alert-danger alert-dismissible fade show " role="alert">
+    <strong>Enter your data correctly.</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {%endif%}
+
+  <a class="btn btn-dark mb-4" style="cursor: default;">
+    &nbsp;&nbsp; RESTRICTED ACCESS
+  </a>
+  
+  <form method="POST" autocomplete="off" novalidate>
+    {%csrf_token%}
+    {{form.username|as_crispy_field}}
+    {{form.password|as_crispy_field}}
+    <hr>
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <a href="{%url 'home'%}" class="btn btn-secondary"> Cancel</a>
+    </div>
+  </form>
+</div>
+{%endblock%}

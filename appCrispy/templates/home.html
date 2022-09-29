@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% block  contenido%}
+{%load crispy_forms_tags%}
+
+<h1 class="text-center text-primary mt-5">HOME PAGE</h1>
+<div class="container card p-3 border-dark text-center mt-3" style="width: 35%;">
+  <h1>Job Vacancy register</h1>
+  <h6 class="mt-3">
+    Frontend : FR-22 &nbsp;|&nbsp; Backend : BA-33 &nbsp;|&nbsp; Fullstack : FK-23 &nbsp;|&nbsp;
+  </h6>
+  <div class="d-grid gap-2 mt-5">
+    <a href="{% url 'register'%}" class="btn btn-primary"> REGISTRATION</a>
+    <a href="{% url 'backend'%}" class="btn btn-warning">LOGIN</a>
+  </div>
+</div>
+{%endblock %}

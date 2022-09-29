@@ -1,0 +1,198 @@
+{% extends "index.html" %}
+{%load crispy_forms_tags%}
+
+{%block headtilte%} Engineer {%endblock%}
+{%block title-color%} bg-danger {%endblock%}
+{%block icon%}fa-brands fa-btc {%endblock%}
+{%block mastertitle%}REGISTER {%endblock%}
+
+{% block  contenido%}
+
+
+
+
+<div class="container" style="width: 95%; font-size: 14px;">
+
+  {%if form.errors %}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ form.email.errors|striptags }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {%endif%}
+  
+  <!-- Message from backend -->
+  {%for message in messages%}
+  {%if message.tags == 'success'%}
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {%endif%}
+  {%endfor%}
+
+  <div class="card border-dark text-center " style="font-size: 18px;">
+    <span class="btn btn-secondary m-4" style="cursor: default;">Frontend : FR-22 &nbsp;|&nbsp; Backend : BA-33 &nbsp;|&nbsp; Fullstack : FK-23 &nbsp;|&nbsp;</span>
+  </div>
+
+  <form method="POST" enctype="multipart/form-data" autocomplete="off" novalidate>
+    {%csrf_token%}
+    <div class="card p-3 mt-3  border-dark">
+      <div class="row">
+        <div class="col-4">
+          {{ form.firstname|as_crispy_field}}
+
+        </div>
+        <div class="col-4">
+          {{ form.lastname|as_crispy_field}}
+          
+        </div>
+        <div class="col-4">
+          {{ form.job|as_crispy_field}}
+        </div>
+
+        <div class="row">
+          <div class="col-4">{{ form.email|as_crispy_field}} </div>
+          <div class="col-4"> {{ form.age|as_crispy_field}}</div>
+          <div class="col-2">{{ form.birthday|as_crispy_field}}</div>
+          <div class="col-2">{{ form.phone|as_crispy_field}}</div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-4"> {{ form.personality|as_crispy_field}}</div>
+        <div class="col-4"> {{ form.salary|as_crispy_field}}</div>
+        <div class="col-2">{{ form.gender|as_crispy_field}}</div>
+        <div class="col-2">{{ form.smoker|as_crispy_field}}</div>
+
+        <hr style="border: 1px solid #007bff;">
+        <div class="col-2">{{ form.experience|as_crispy_field}}</div>
+        {{ form.message|as_crispy_field}}
+        {{form.file|as_crispy_field}}
+        {{form.image|as_crispy_field}}
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="card border-dark p-2 mb-5">
+      <span class="btn btn-secondary m-4" style="cursor: default;"> MARK YOUR SKILLS</span>
+      <hr style="border: 1px solid #007bff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            {{form.frameworks|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.languages|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.databases|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.libraries|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.mobile|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.other|as_crispy_field}}
+          </div>
+        </div>
+      </div>
+     
+    </div>
+
+    <div class="card border-dark p-2 mb-5">
+      <span class="btn btn-secondary m-4" style="cursor: default;"> EDUCATIONAL</span>
+      <hr style="border: 1px solid #007bff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            {{form.university|as_crispy_field}}
+          </div>
+          <div class="col-4">
+            {{form.faculty|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.institution|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.course|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            {{form.start_course|as_crispy_field}}
+          </div>
+          <div class="col-4">
+            {{form.end_course|as_crispy_field}}
+          </div>
+         
+          <div class="col-4">
+            {{form.status_course|as_crispy_field}}
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-12">
+          {{form.about_course|as_crispy_field}}
+        </div>  
+      </div>
+      </div>
+     
+    </div>
+
+    <div class="card border-dark p-2">
+      <span class="btn btn-secondary m-4" style="cursor: default;"> PROFESSIONAL</span>
+      <hr style="border: 1px solid #007bff;">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-4">
+            {{form.company|as_crispy_field}}
+          </div>
+          <div class="col-4">
+            {{form.position|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.start_work|as_crispy_field}}
+          </div>
+          <div class="col-2">
+            {{form.end_work|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          
+          <div class="col-4">
+            {{form.remote|as_crispy_field}}
+          </div>
+          <div class="col-4">
+            {{form.employed|as_crispy_field}}
+          </div>
+         
+          <div class="col-4">
+            {{form.travel|as_crispy_field}}
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-12">
+          
+          {{form.about_work|as_crispy_field}}
+        </div>  
+      </div>
+      </div>  
+    </div>
+    
+    {%block buttons%}
+    <button type="submit"  style="width: 90px;" class="btn btn-primary mt-2"> Send</button>
+    <a href="{% url 'register'%}"  style="width: 90px;"class="btn btn-primary mt-2"> Reset</a>
+    <a href="{% url 'home'%}"  style="width: 90px;"class="btn btn-dark mt-2"> Go Back</a>
+    {%endblock%}
+
+  </form>
+</div>
+<br><br><br>
+{%endblock %}

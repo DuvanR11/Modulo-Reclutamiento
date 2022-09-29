@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{%load crispy_forms_tags%}
+
+{%block headtilte%} Engineers {%endblock%}
+{%block title-color%} bg-success {%endblock%}
+{%block icon%}fa-brands fa-free-code-camp {%endblock%}
+{%block mastertitle%}Show Enginners {%endblock%}
+
+
+{% block  contenido%}
+
+<h1 class="text-center text-danger mt-5">BACKEND</h1>
+
+<div class="container" style="width: 90%; font-size: 14px;">
+  <a href="{%url 'logout'%}" class="btn btn-danger mt-3 mb-3 my-btn">Logout</a>
+</div>
+
+<h6 class="card p-2 bg-secondary text-light text-center mb-3 p-2 "> LIST OF CANDIDATES</h6>
+
+
+<div class="container">
+  <table class="table table-bordered text-center">
+    <thead class="table-secondary">
+      <tr>
+        <th >Name</th>
+        <th >Email</th>
+        <th >Phone</th>
+        <th >Gender</th>
+        <th >Smoker</th>
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {%for data in data_read%}
+      <tr>
+        <td>{{data.firstname}} {{data.lastname}}</td>
+        <td>{{data.email}}</td>
+        <td> +57 {{data.phone}}</td>
+        <td>{{data.gender}}</td>
+        {%if data.smoker == 1%}
+        <td>SI</td>
+        {%else%}
+        <td>NO</td>
+        {%endif%}
+        
+        <td>
+          <a href="{%url 'engineer' data.id%}" class="btn btn-danger">
+            <i class="bi bi-eye-fill"></i>
+          </a>
+        </td>
+        {%empty%}
+        <td colspan="6" class="text-danger">  <strong>No records found</strong></td>
+        {%endfor%}
+    </tbody>
+  
+  </table>
+</div>
+{%endblock %}
